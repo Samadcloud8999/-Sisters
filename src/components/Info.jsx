@@ -62,7 +62,7 @@ const Info = () => (
           {
             id: 1,
             title: "Написать нам",
-            text: "По телефону +996 555 222 588 или Telegram @sisters_sweets_bishkek_direct. Обсудим торт, кенди-бар и детали заказа.",
+            text: "По телефону +996 555 222 258 или Telegram @sisters_sweets_bishkek_direct. Обсудим торт, кенди-бар и детали заказа.",
             icon: <ArrowRight className="text-sweet-pink" />,
           },
           {
@@ -74,7 +74,7 @@ const Info = () => (
           {
             id: 3,
             title: "Оплата",
-            text: "Минимальный задаток 30% от суммы заказа. Тел: +996 555 222 588",
+            text: "Минимальный задаток 30% от суммы заказа. Тел: +996 555 222 258",
             icon: <ArrowRight className="text-sweet-pink" />,
           },
           {

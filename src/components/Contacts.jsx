@@ -26,8 +26,8 @@ const Contacts = () => (
           className="flex items-center justify-center space-x-3 p-3 rounded-xl hover:bg-rose-50 transition"
         >
           <FaPhone className="text-rose-500 text-2xl" />
-          <span className="text-lg text-gray-700">+996 (555) 22-22-58</span>
-        </motion.div>
+          <span className="text-lg text-gray-700">+996 (555) 222-258</span>
+        </motion.div> 
 
         <motion.div
           whileHover={{ scale: 1.05 }}
