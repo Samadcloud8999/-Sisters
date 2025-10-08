@@ -21,7 +21,6 @@ const Contacts = () => (
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        {/* Телефон */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           className="flex items-center justify-center space-x-3 p-3 rounded-xl hover:bg-rose-50 transition"
@@ -30,7 +29,6 @@ const Contacts = () => (
           <span className="text-lg text-gray-700">+996 (555) 22-22-58</span>
         </motion.div>
 
-        {/* WhatsApp */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           className="flex items-center justify-center space-x-3 p-3 rounded-xl hover:bg-green-50 transition"
@@ -47,7 +45,6 @@ const Contacts = () => (
             </a>
           </span>
         </motion.div>
-        {/* Instagram */}
         <motion.a
           href="https://www.instagram.com/sisters_sweets_bishkek?igsh=MW81NmJiMXU0dDNuZg=="
           target="_blank"

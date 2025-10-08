@@ -19,10 +19,8 @@ const Hero = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Затемнение фона */}
       <div className="absolute inset-0 bg-black/30"></div>
 
-      {/* Основной контент */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -56,8 +54,6 @@ const Hero = () => {
         >
           <p>"Жизнь сладка, когда есть торты."</p>
         </motion.div>
-
-        {/* Кнопка "Заказать" */}
         <motion.button
           onClick={handleOrderClick}
           className="relative bg-rose-500 text-white px-10 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-rose-300 transition-all duration-300 transform hover:scale-105"

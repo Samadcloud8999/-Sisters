@@ -6,7 +6,6 @@ import Modal from '../Modal';
 const WeddingCakes = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Массив объектов для изображений — вставь свои 9 фото здесь!
   const images = [
     // { src: '/assets/images/wedding-cake-1.jpg', alt: 'Свадебный торт №1' },
     // { src: '/assets/images/wedding-cake-2.jpg', alt: 'Свадебный торт №2' },

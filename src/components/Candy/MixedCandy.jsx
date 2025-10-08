@@ -6,11 +6,11 @@ import Modal from '../Modal';
 const MixedCandy = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Массив объектов для изображений — вставь свои 7 фото здесь!
+
   const images = [
     // { src: '/images/candy-mixed-1.jpg', alt: 'Кенди-бар разное №1' },
     // { src: '/images/candy-mixed-2.jpg', alt: 'Кенди-бар разное №2' },
-    // ... (добавь до 7)
+    
   ];
 
   return (

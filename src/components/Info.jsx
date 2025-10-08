@@ -16,7 +16,6 @@ const itemVariants = {
 
 const Info = () => (
   <section className="relative py-20 bg-gradient-to-b from-pink-50 via-white to-pink-100 overflow-hidden">
-    {/* 🌸 Decorative blur background */}
     <motion.div
       className="absolute -top-10 -right-10 w-72 h-72 bg-sweet-pink/20 rounded-full blur-3xl"
       initial={{ opacity: 0, scale: 0.6 }}
@@ -57,7 +56,7 @@ const Info = () => (
         className="space-y-8"
         variants={containerVariants}
         initial="hidden"
-        animate="visible" // Запускаем сразу при загрузке
+        animate="visible" 
       >
         {[
           {

@@ -12,7 +12,6 @@ const fadeIn = (delay = 0) => ({
 
 const WelcomeSection = () => (
   <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-rose-50 via-white to-pink-50 overflow-hidden">
-    {/* Декоративные blur */}
     <motion.div
       className="absolute -top-32 left-1/2 w-[600px] h-[600px] bg-pink-200/20 rounded-full blur-3xl -translate-x-1/2"
       initial={{ opacity: 0, scale: 0.5 }}
@@ -27,7 +26,6 @@ const WelcomeSection = () => (
     />
 
     <div className="relative z-10 max-w-7xl mx-auto">
-      {/* Заголовок */}
       <motion.div
         className="text-center mb-16 px-4"
         variants={fadeIn(0)}
@@ -44,7 +42,6 @@ const WelcomeSection = () => (
         </p>
       </motion.div>
 
-      {/* Карточки с иконками */}
       <motion.div
         className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 px-4"
         variants={fadeIn(0.2)}

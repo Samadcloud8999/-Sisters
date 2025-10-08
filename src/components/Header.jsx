@@ -23,7 +23,6 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-[#fff7f9] shadow-lg z-50 px-5 py-4 font-['Cormorant_Garamond'] text-gray-700">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Логотип */}
         <Link
           to="/"
           className="text-3xl sm:text-4xl font-['Playfair_Display'] text-rose-500 tracking-wide hover:text-rose-400 transition-all select-none"
@@ -31,7 +30,6 @@ const Header = () => {
           Sisters’ Sweets
         </Link>
 
-        {/* Десктоп меню */}
         <nav className="hidden md:flex space-x-8 ml-auto items-center">
           {menuItems.map((item) => (
             <Link
@@ -53,7 +51,6 @@ const Header = () => {
           </a>
         </nav>
 
-        {/* Бургер меню (mobile) */}
         <motion.button
           className="md:hidden flex flex-col justify-between w-8 h-6 focus:outline-none relative z-50"
           onClick={() => setIsOpen(!isOpen)}
@@ -77,7 +74,6 @@ const Header = () => {
         </motion.button>
       </div>
 
-      {/* Мобильное меню */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -110,7 +106,6 @@ const Header = () => {
               </a>
             </motion.nav>
 
-            {/* Полупрозрачный фон полностью отключен */}
           </>
         )}
       </AnimatePresence>

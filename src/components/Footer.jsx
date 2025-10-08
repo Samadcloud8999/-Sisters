@@ -4,7 +4,6 @@ import { FaInstagram, FaPhoneAlt, FaTelegramPlane } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white py-14 px-6 overflow-hidden">
-      {/* 💫 Фон с розовым свечением */}
       <motion.div
         className="absolute -top-20 left-1/2 w-[600px] h-[600px] bg-sweet-pink/10 blur-3xl -translate-x-1/2"
         initial={{ opacity: 0, scale: 0.6 }}
@@ -13,7 +12,6 @@ const Footer = () => {
       />
 
       <div className="relative container mx-auto text-center z-10">
-        {/* 🌸 Название */}
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-sweet-pink bg-clip-text text-transparent inline-block cursor-pointer transition-transform duration-500 hover:scale-105"
           style={{ fontFamily: "'Playfair Display', serif" }}
@@ -24,7 +22,6 @@ const Footer = () => {
           Sisters’ Sweets
         </motion.h2>
 
-        {/* 🧁 Описание */}
         <motion.p
           className="max-w-xl mx-auto text-gray-300 mb-8 text-sm md:text-base leading-relaxed"
           style={{ fontFamily: "'Cormorant Garamond', serif" }}
@@ -36,7 +33,6 @@ const Footer = () => {
           Сладости, которые создают настроение и украшают ваш праздник!
         </motion.p>
 
-        {/* 📞 Контакты */}
         <motion.div
           className="flex justify-center items-center space-x-6 mb-8"
           initial={{ opacity: 0, y: 20 }}
@@ -66,7 +62,6 @@ const Footer = () => {
           </a>
         </motion.div>
 
-        {/* © Авторское право */}
         <motion.p
           className="text-xs text-gray-400"
           initial={{ opacity: 0 }}

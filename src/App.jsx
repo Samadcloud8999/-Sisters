@@ -9,13 +9,11 @@ import Info from "./components/Info";
 import Contacts from "./components/Contacts";
 import CandyBar from "./components/CandyBar";
 
-// Импорты для Cakes
 import GirlsCakes from "./components/Cakes/GirlsCakes";
 import BoysCakes from "./components/Cakes/BoysCakes";
 import AdultsCakes from "./components/Cakes/AdultsCakes";
 import WeddingCakes from "./components/Cakes/WeddingCakes";
 
-// Импорты для Candy
 import BoysCandy from "./components/Candy/BoysCandy";
 import GirlsCandy from "./components/Candy/GirlsCandy";
 import MixedCandy from "./components/Candy/MixedCandy";
@@ -26,7 +24,6 @@ function App() {
       <Header />
       <main className="flex-1">
         <Routes>
-          {/* Главная */}
           <Route
             path="/"
             element={
@@ -38,7 +35,6 @@ function App() {
             }
           />
 
-          {/* Торты */}
           <Route path="/cakes" element={<Cakes />}>
             <Route path="girls" element={<GirlsCakes />} />
             <Route path="boys" element={<BoysCakes />} />
@@ -47,14 +43,13 @@ function App() {
           </Route>
 
          // Кенди-Бар секция в App.jsx
-<Route path="/candy" element={<CandyBar />}>  {/* Добавляем основной компонент */}
+<Route path="/candy" element={<CandyBar />}>  
   <Route index element={<MixedCandy />} />
   <Route path="girls" element={<GirlsCandy />} />
   <Route path="boys" element={<BoysCandy />} />
   <Route path="mixed" element={<MixedCandy />} />
 </Route>
 
-          {/* Остальные страницы */}
           <Route path="/info" element={<Info />} />
           <Route path="/contacts" element={<Contacts />} />
         </Routes>

@@ -7,11 +7,10 @@ import image1 from "../../assets/images/1.jpg";
 const BoysCandy = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Массив объектов для изображений — вставь свои 7 фото здесь!
   const images = [
     { src: image1, alt: "Торт для девочек №1" },
     // { src: '/images/candy-boys-2.jpg', alt: 'Кенди-бар для мальчиков №2' },
-    // ... (добавь до 7)
+   
   ];
 
   return (

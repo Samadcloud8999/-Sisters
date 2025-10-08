@@ -24,7 +24,6 @@ const CandyBar = () => {
         Кенди-бар
       </h1>
 
-      {/* Кнопки табов */}
       <div className="flex flex-wrap justify-center gap-4 mb-12">
         {tabs.map((tab) => (
           <motion.button
@@ -43,7 +42,6 @@ const CandyBar = () => {
         ))}
       </div>
 
-      {/* Контент таба */}
       <motion.div
         key={location.pathname}
         initial={{ opacity: 0, y: 20 }}

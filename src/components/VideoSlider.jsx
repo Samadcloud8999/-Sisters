@@ -20,7 +20,6 @@ const VideoSlider = () => {
     nextSlide();
   };
 
-  // 🔳 Включение и выключение полноэкранного режима
   const handleFullscreen = () => {
     const video = videoRef.current;
     if (!video) return;
@@ -66,7 +65,6 @@ const VideoSlider = () => {
           isFullscreen ? "max-w-full" : "max-w-5xl px-3 sm:px-6"
         }`}
       >
-        {/* Видео контейнер */}
         <div
           className={`relative rounded-3xl overflow-hidden shadow-xl ${
             isFullscreen ? "" : "aspect-video"
@@ -94,7 +92,6 @@ const VideoSlider = () => {
             />
           </AnimatePresence>
 
-          {/* 🔘 Кнопка "весь экран" */}
           <button
             onClick={handleFullscreen}
             className={`absolute top-3 right-3 ${
@@ -108,7 +105,6 @@ const VideoSlider = () => {
             )}
           </button>
 
-          {/* ⬅️ Стрелка влево */}
           <button
             onClick={prevSlide}
             className={`absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 ${
@@ -118,7 +114,6 @@ const VideoSlider = () => {
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
-          {/* ➡️ Стрелка вправо */}
           <button
             onClick={nextSlide}
             className={`absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 ${
@@ -129,7 +124,6 @@ const VideoSlider = () => {
           </button>
         </div>
 
-        {/* 🔘 Индикаторы под видео */}
         {!isFullscreen && (
           <div className="flex justify-center mt-5 space-x-2 sm:space-x-3">
             {videos.map((_, index) => (
@@ -147,7 +141,6 @@ const VideoSlider = () => {
         )}
       </div>
 
-      {/* 💫 Фон */}
       {!isFullscreen && (
         <motion.div
           className="absolute -bottom-32 left-1/2 w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] bg-sweet-pink/10 blur-3xl rounded-full -translate-x-1/2"

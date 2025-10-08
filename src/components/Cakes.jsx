@@ -41,7 +41,6 @@ const Cakes = () => {
 
   return (
     <section className="bg-gradient-to-b from-pink-50 via-white to-rose-50 py-16 px-4 sm:px-8">
-      {/* Заголовок */}
       <motion.h2
         className="text-center text-3xl sm:text-5xl font-bold text-rose-600 mb-2 drop-shadow-sm"
         initial={{ opacity: 0, y: -20 }}
@@ -51,7 +50,6 @@ const Cakes = () => {
         Наши Торты
       </motion.h2>
 
-      {/* Подзаголовок */}
       <motion.p
         className="text-center text-lg text-gray-600 mb-10"
         initial={{ opacity: 0, y: -10 }}
@@ -61,9 +59,7 @@ const Cakes = () => {
         Уникальные торты для любого праздника и настроения 🎂✨
       </motion.p>
 
-      {/* Навигация */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-        {/* Мобильный кастомный dropdown */}
         <div className="sm:hidden relative w-full max-w-md">
           <button
             className="w-full flex justify-between items-center bg-white/90 px-4 py-3 rounded-full shadow-md font-semibold text-gray-700 hover:bg-rose-50 transition"
@@ -105,7 +101,6 @@ const Cakes = () => {
           </AnimatePresence>
         </div>
 
-        {/* Таб-кнопки для десктопа */}
         <div className="hidden sm:flex overflow-x-auto justify-center gap-4 no-scrollbar">
           {tabs.map((tab) => (
             <motion.button
@@ -125,7 +120,6 @@ const Cakes = () => {
         </div>
       </div>
 
-      {/* Контент активной вкладки */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}

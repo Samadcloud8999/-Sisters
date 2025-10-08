@@ -7,7 +7,6 @@ import image1 from '../../assets/images/1.jpg';
 const GirlsCakes = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Массив объектов для изображений — вставь свои 12 фото здесь!
   const images = [
   { src: image1, alt: "Торт для девочек №1" },
     // { src: '/images/girls-cake-2.jpg', alt: 'Торт для девочек №2' },

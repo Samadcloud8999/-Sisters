@@ -6,7 +6,6 @@ import Modal from '../Modal';
 const BoysCakes = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Массив объектов для изображений — вставь свои 10 фото здесь!
   const images = [
     // { src: '/images/boys-cake-1.jpg', alt: 'Торт для мальчиков №1' },
     // { src: '/images/boys-cake-2.jpg', alt: 'Торт для мальчиков №2' },
