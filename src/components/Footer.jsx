@@ -1,74 +1,63 @@
 import { motion } from "framer-motion";
 import { FaInstagram, FaPhoneAlt, FaTelegramPlane } from "react-icons/fa";
+import { GiCupcake } from "react-icons/gi";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white py-14 px-6 overflow-hidden">
-      <motion.div
-        className="absolute -top-20 left-1/2 w-[600px] h-[600px] bg-sweet-pink/10 blur-3xl -translate-x-1/2"
-        initial={{ opacity: 0, scale: 0.6 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5 }}
-      />
-
-      <div className="relative container mx-auto text-center z-10">
-        <motion.h2
-          className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-sweet-pink bg-clip-text text-transparent inline-block cursor-pointer transition-transform duration-500 hover:scale-105"
-          style={{ fontFamily: "'Playfair Display', serif" }}
-          initial={{ opacity: 0, y: 40 }}
+    <footer className="relative bg-gradient-to-b from-white to-pink-50/50 py-8 mt-12">
+      <div className="container mx-auto text-center max-w-3xl px-4">
+        <motion.div
+          className="flex items-center justify-center mb-6"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Sisters’ Sweets
-        </motion.h2>
+          <GiCupcake className="text-sweet-pink text-2xl mr-2" />
+          <h2 className="text-2xl font-bold text-gray-800 font-['Playfair_Display']">
+            Sisters' Sweets
+          </h2>
+        </motion.div>
 
-        <motion.p
-          className="max-w-xl mx-auto text-gray-300 mb-8 text-sm md:text-base leading-relaxed"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+        <motion.div
+          className="flex justify-center items-center space-x-8 mb-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Авторская кондитерская по изготовлению тортов и кенди-баров на заказ.
-          Сладости, которые создают настроение и украшают ваш праздник!
-        </motion.p>
-
-        <motion.div
-          className="flex justify-center items-center space-x-6 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
           <a
             href="https://www.instagram.com/sisters_sweets_bishkek?igsh=MW81NmJiMXU0dDNuZg=="
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Instagram"
-            className="p-3 bg-white/10 rounded-full hover:bg-sweet-pink/30 transition-all duration-300 hover:scale-110"
+            className="p-2 text-sweet-pink hover:text-pink-500 transition-colors duration-300"
           >
-            <FaInstagram className="text-pink-400 text-2xl" />
+            <FaInstagram className="text-xl" />
           </a>
           <a
             href="tel:+996509190706"
             aria-label="Телефон"
-            className="p-3 bg-white/10 rounded-full hover:bg-sweet-pink/30 transition-all duration-300 hover:scale-110"
+            className="p-2 text-sweet-pink hover:text-pink-500 transition-colors duration-300"
           >
-            <FaPhoneAlt className="text-pink-400 text-xl" />
+            <FaPhoneAlt className="text-xl" />
           </a>
           <a
             href="https://t.me/sisters_sweets_bishkek_direct"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Telegram"
-            className="p-3 bg-white/10 rounded-full hover:bg-sweet-pink/30 transition-all duration-300 hover:scale-110"
+            className="p-2 text-sweet-pink hover:text-pink-500 transition-colors duration-300"
           >
-            <FaTelegramPlane className="text-pink-400 text-xl" />
+            <FaTelegramPlane className="text-xl" />
           </a>
         </motion.div>
 
         <motion.p
-          className="text-xs text-gray-400"
+          className="text-gray-500 text-sm"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.3 }}
         >
-          &copy; 2025 Sisters’ Sweets. Все права защищены.
+          &copy; {new Date().getFullYear()} Sisters' Sweets
         </motion.p>
       </div>
     </footer>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Heart, Trophy, Gift, Coffee } from "lucide-react";
 import GirlsCakes from "./Cakes/GirlsCakes";
@@ -10,29 +10,33 @@ const Cakes = () => {
   const [activeTab, setActiveTab] = useState("girls");
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeTab]);
+
   const tabs = [
     {
       id: "girls",
-      title: "Торты для девочек",
-      icon: <Heart className="inline-block w-5 h-5 mr-2 text-rose-500" />,
+      title: "Для девочек",
+      icon: <Heart className="w-5 h-5 text-rose-500" />,
       component: <GirlsCakes />,
     },
     {
       id: "boys",
-      title: "Торты для мальчиков",
-      icon: <Trophy className="inline-block w-5 h-5 mr-2 text-blue-500" />,
+      title: "Для мальчиков",
+      icon: <Trophy className="w-5 h-5 text-blue-500" />,
       component: <BoysCakes />,
     },
     {
       id: "adults",
-      title: "Торты для взрослых",
-      icon: <Coffee className="inline-block w-5 h-5 mr-2 text-yellow-500" />,
+      title: "Для взрослых",
+      icon: <Coffee className="w-5 h-5 text-yellow-500" />,
       component: <AdultsCakes />,
     },
     {
       id: "wedding",
-      title: "Свадебные торты",
-      icon: <Gift className="inline-block w-5 h-5 mr-2 text-pink-500" />,
+      title: "Свадебные",
+      icon: <Gift className="w-5 h-5 text-pink-500" />,
       component: <WeddingCakes />,
     },
   ];
@@ -42,7 +46,7 @@ const Cakes = () => {
   return (
     <section className="bg-gradient-to-b from-pink-50 via-white to-rose-50 py-16 px-4 sm:px-8">
       <motion.h2
-        className="text-center text-3xl sm:text-5xl font-bold text-rose-600 mb-2 drop-shadow-sm"
+        className="text-center text-5xl font-['Playfair_Display'] text-rose-600 mb-3 mt-11"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -50,19 +54,16 @@ const Cakes = () => {
         Наши Торты
       </motion.h2>
 
-      <motion.p
-        className="text-center text-lg text-gray-600 mb-10"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        Уникальные торты для любого праздника и настроения 🎂✨
-      </motion.p>
+      <p className="text-center text-lg text-gray-600 mb-10">
+        Уникальные торты для любого праздника 🎂✨
+      </p>
 
+      {/* Навигация */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        {/* Мобильный dropdown */}
         <div className="sm:hidden relative w-full max-w-md">
           <button
-            className="w-full flex justify-between items-center bg-white/90 px-4 py-3 rounded-full shadow-md font-semibold text-gray-700 hover:bg-rose-50 transition"
+            className="w-full flex justify-between items-center bg-white px-4 py-3 rounded-full shadow-md font-semibold text-gray-700 hover:bg-rose-50 transition"
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
             {tabs.find((tab) => tab.id === activeTab)?.icon}
@@ -81,37 +82,36 @@ const Cakes = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="absolute z-20 w-full mt-2 bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200"
+                className="absolute z-20 w-full mt-2 bg-white rounded-2xl shadow-lg overflow-hidden"
               >
                 {tabs.map((tab) => (
-                  <motion.li
+                  <li
                     key={tab.id}
-                    whileHover={{ backgroundColor: "rgba(248, 113, 113, 0.1)" }}
                     onClick={() => {
                       setActiveTab(tab.id);
                       setDropdownOpen(false);
                     }}
-                    className="px-4 py-3 cursor-pointer text-gray-700 font-medium flex items-center gap-2 transition-colors"
+                    className="px-4 py-3 cursor-pointer text-gray-700 font-medium flex items-center gap-2 hover:bg-rose-50"
                   >
                     {tab.icon} {tab.title}
-                  </motion.li>
+                  </li>
                 ))}
               </motion.ul>
             )}
           </AnimatePresence>
         </div>
 
-        <div className="hidden sm:flex overflow-x-auto justify-center gap-4 no-scrollbar">
+        {/* Десктоп кнопки */}
+        <div className="hidden sm:flex justify-center gap-4">
           {tabs.map((tab) => (
             <motion.button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`px-6 py-3 whitespace-nowrap rounded-full font-semibold shadow-md transition-all duration-300 text-sm sm:text-base flex items-center gap-2 ${
+              whileTap={{ scale: 0.97 }}
+              className={`px-6 py-3 rounded-full font-semibold shadow-md flex items-center gap-2 transition-all duration-300 ${
                 activeTab === tab.id
                   ? "bg-rose-500 text-white shadow-rose-300"
-                  : "bg-white/80 text-gray-700 hover:bg-rose-100 hover:text-rose-600"
+                  : "bg-white text-gray-700 hover:bg-rose-100 hover:text-rose-600"
               }`}
             >
               {tab.icon} {tab.title}
@@ -120,6 +120,7 @@ const Cakes = () => {
         </div>
       </div>
 
+      {/* Контент */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}

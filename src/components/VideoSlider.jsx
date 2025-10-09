@@ -2,153 +2,147 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 
+// Импортируем видео
 import video1 from "../assets/videos/video1.mp4";
+import video2 from "../assets/videos/video2.mp4";
+import video3 from "../assets/videos/video3.mp4";
 
 const VideoSlider = () => {
-  const videos = [{ src: video1, alt: "Видео 1" }];
+  const videos = [
+    { src: video3, alt: "Видео 3" },
+    { src: video1, alt: "Видео 1" },
+    { src: video2, alt: "Видео 2" },
+  ];
 
   const [current, setCurrent] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const videoRef = useRef(null);
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % videos.length);
-  const prevSlide = () =>
-    setCurrent((prev) => (prev - 1 + videos.length) % videos.length);
-
-  const handleVideoEnd = () => {
-    nextSlide();
+  const handleSlideChange = (newIndex) => {
+    if (isTransitioning) return; // Предотвращаем множественные нажатия
+    setIsTransitioning(true);
+    setCurrent(newIndex);
+    setTimeout(() => setIsTransitioning(false), 300); // Уменьшили время анимации
   };
+
+  const nextSlide = () => {
+    const newIndex = (current + 1) % videos.length;
+    handleSlideChange(newIndex);
+  };
+
+  const prevSlide = () => {
+    const newIndex = (current - 1 + videos.length) % videos.length;
+    handleSlideChange(newIndex);
+  };
+
+  const handleVideoEnd = () => nextSlide();
 
   const handleFullscreen = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    if (!isFullscreen) {
-      if (video.requestFullscreen) video.requestFullscreen();
-      else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-      else if (video.msRequestFullscreen) video.msRequestFullscreen();
-      setIsFullscreen(true);
-    } else {
-      if (document.exitFullscreen) document.exitFullscreen();
-      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      else if (document.msExitFullscreen) document.msExitFullscreen();
-      setIsFullscreen(false);
+    try {
+      if (!isFullscreen) {
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
+      setIsFullscreen(!isFullscreen);
+    } catch (error) {
+      console.error("Ошибка переключения полноэкранного режима:", error);
     }
   };
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-
-    const handleChange = () => {
-      if (!document.fullscreenElement) setIsFullscreen(false);
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
     };
-    document.addEventListener("fullscreenchange", handleChange);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      document.removeEventListener("fullscreenchange", handleChange);
-    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () =>
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
   }, []);
 
   return (
-    <section
-      className={`relative py-16 sm:py-24 ${
-        isFullscreen
-          ? "bg-black"
-          : "bg-gradient-to-b from-rose-50 via-white to-pink-50"
-      } overflow-hidden`}
-    >
-      <div
-        className={`relative mx-auto text-center ${
-          isFullscreen ? "max-w-full" : "max-w-5xl px-3 sm:px-6"
-        }`}
-      >
-        <div
-          className={`relative rounded-3xl overflow-hidden shadow-xl ${
-            isFullscreen ? "" : "aspect-video"
-          }`}
-        >
-          <AnimatePresence mode="wait">
+    <section className="relative py-8 sm:py-16 bg-gradient-to-b from-rose-50 via-white to-pink-50 overflow-hidden">
+      <div className="relative mx-auto max-w-5xl px-4">
+        <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.video
               key={current}
               ref={videoRef}
               src={videos[current].src}
+              className="w-full h-full object-cover"
               controls
               playsInline
               autoPlay
               muted
               onEnded={handleVideoEnd}
-              className={`w-full ${
-                isFullscreen
-                  ? "h-screen object-contain bg-black"
-                  : "object-cover aspect-video"
-              }`}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }} // Уменьшили время анимации
             />
           </AnimatePresence>
 
-          <button
-            onClick={handleFullscreen}
-            className={`absolute top-3 right-3 ${
-              isFullscreen ? "bg-white/30" : "bg-white/70"
-            } backdrop-blur-md hover:bg-sweet-pink hover:text-white text-sweet-pink p-2 sm:p-3 rounded-full shadow-md transition-all`}
-          >
-            {isFullscreen ? (
-              <X className="w-5 h-5 sm:w-6 sm:h-6" />
-            ) : (
-              <Maximize2 className="w-5 h-5 sm:w-6 sm:h-6" />
-            )}
-          </button>
-
+          {/* Оптимизированные кнопки навигации */}
           <button
             onClick={prevSlide}
-            className={`absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 ${
-              isFullscreen ? "bg-white/20" : "bg-white/60"
-            } hover:bg-sweet-pink hover:text-white text-sweet-pink backdrop-blur-md p-2 sm:p-3 rounded-full shadow-lg transition-all active:scale-95`}
+            disabled={isTransitioning}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm transition-all active:scale-95 touch-manipulation"
+            style={{ WebkitTapHighlightColor: "transparent" }}
           >
-            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
 
           <button
             onClick={nextSlide}
-            className={`absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 ${
-              isFullscreen ? "bg-white/20" : "bg-white/60"
-            } hover:bg-sweet-pink hover:text-white text-sweet-pink backdrop-blur-md p-2 sm:p-3 rounded-full shadow-lg transition-all active:scale-95`}
+            disabled={isTransitioning}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm transition-all active:scale-95 touch-manipulation"
+            style={{ WebkitTapHighlightColor: "transparent" }}
           >
-            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={handleFullscreen}
+            className="absolute top-2 right-2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm transition-all"
+          >
+            {isFullscreen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Maximize2 className="w-5 h-5" />
+            )}
           </button>
         </div>
 
-        {!isFullscreen && (
-          <div className="flex justify-center mt-5 space-x-2 sm:space-x-3">
-            {videos.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrent(index)}
-                className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all ${
-                  index === current
-                    ? "bg-sweet-pink scale-125"
-                    : "bg-gray-300 hover:bg-gray-400"
-                }`}
-              />
-            ))}
-          </div>
-        )}
+        {/* Индикаторы */}
+        <div className="flex justify-center mt-4 gap-2">
+          {videos.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handleSlideChange(index)}
+              disabled={isTransitioning}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === current ? "bg-sweet-pink w-4" : "bg-gray-300"
+              }`}
+            />
+          ))}
+        </div>
       </div>
-
-      {!isFullscreen && (
-        <motion.div
-          className="absolute -bottom-32 left-1/2 w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] bg-sweet-pink/10 blur-3xl rounded-full -translate-x-1/2"
-          initial={{ opacity: 0, scale: 0.6 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2 }}
-        />
-      )}
     </section>
   );
 };
