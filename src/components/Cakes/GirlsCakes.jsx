@@ -2,13 +2,12 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Card from "../Card";
 import Modal from "../Modal";
-import image1 from "../../assets/images/rusalka.jpg";
 
 const GirlsCakes = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const images = [
-    { src: image1, alt: "Торт для девочек №1" },
+    //{ src: image1, alt: "Торт для девочек №1" },
  
   ];
 
