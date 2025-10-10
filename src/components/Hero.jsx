@@ -1,77 +1,75 @@
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../assets/images/logotip.PNG";
-import { Cake, Coffee, Info, Phone } from "lucide-react";
+import videoBg from "../assets/videos/clipfly-ai-20251010210213.mp4";
 
 const Hero = () => {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
 
   const handleOrderClick = () => {
     navigate("/info");
   };
 
-  const catalog = [
-    {
-      title: "Торты",
-      icon: <Cake size={26} className="text-rose-500" />,
-      link: "/cakes",
-    },
-    {
-      title: "Кенди-Бар",
-      icon: <Coffee size={26} className="text-yellow-500" />,
-      link: "/candy",
-    },
-    {
-      title: "Информация",
-      icon: <Info size={26} className="text-blue-500" />,
-      link: "/info",
-    },
-    {
-      title: "Контакты",
-      icon: <Phone size={26} className="text-green-500" />,
-      link: "/contacts",
-    },
-  ];
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play();
+      const stopAt = 3;
+      const checkTime = () => {
+        if (video.currentTime >= stopAt) {
+          video.pause();
+          video.removeEventListener("timeupdate", checkTime);
+        }
+      };
+      video.addEventListener("timeupdate", checkTime);
+      return () => video.removeEventListener("timeupdate", checkTime);
+    }
+  }, []);
 
   return (
-    <>
-      {/* Hero Section */}
-      <section
-        className="relative flex flex-col items-center justify-center text-center min-h-[80vh] px-4 sm:px-6 md:px-10 overflow-hidden"
-        style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        {/* затемнение фона */}
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
+    <section className="relative flex flex-col items-center justify-center min-h-[100vh] overflow-hidden text-center">
+      {/* Видео фон */}
+      <video
+        ref={videoRef}
+        src={videoBg}
+        className="absolute inset-0 w-full h-full object-cover"
+        muted
+        playsInline
+      />
 
-        {/* Текст */}
-        <motion.div
+      {/* затемнение фона */}
+      <div className="absolute inset-0 bg-black/40" />
+
+      {/* Текст и кнопка */}
+      <div className="relative z-10 flex flex-col items-center space-y-8">
+        {/* Заголовок */}
+        <motion.h1
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="text-5xl md:text-6xl font-extrabold tracking-wide text-white drop-shadow-[0_0_25px_rgba(255,100,150,0.6)]"
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            letterSpacing: "1px",
+          }}
+        >
+          Sisters’ Sweets
+        </motion.h1>
+
+        {/* Кнопка */}
+        <motion.button
+          onClick={handleOrderClick}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 max-w-3xl text-white drop-shadow-lg"
+          transition={{ duration: 1, delay: 0.6 }}
+          className="bg-rose-500 text-white px-10 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-rose-300 transition-all duration-300 transform hover:scale-105"
+          whileTap={{ scale: 0.95 }}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
-            Sisters' Sweets
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8">
-            Сделаем Ваш праздник по-настоящему сладким и незабываемым!
-          </p>
-
-          <motion.button
-            onClick={handleOrderClick}
-            whileTap={{ scale: 100 }}
-            className="bg-rose-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-rose-400 hover:shadow-rose-300 transition-transform duration-300 hover:scale-105"
-          >
-            Заказать
-          </motion.button>
-        </motion.div>
-      </section>
-    </>
+          Заказать
+        </motion.button>
+      </div>
+    </section>
   );
 };
 

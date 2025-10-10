@@ -54,18 +54,25 @@ const Info = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-pink-50 via-white to-pink-100 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-pink-100 via-rose-50 to-violet-100 py-20 px-4 sm:px-8 overflow-hidden">
       {/* Фоновые элементы */}
       <motion.div
-        className="absolute -top-10 -right-10 w-72 h-72 bg-rose-200/20 rounded-full blur-3xl"
+        className="absolute -top-10 -right-10 w-72 h-72 bg-rose-300/20 rounded-full blur-3xl"
         initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
       />
+      <motion.div
+        className="absolute bottom-0 left-0 w-80 h-80 bg-violet-200/20 rounded-full blur-3xl"
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.8 }}
+      />
 
-      <div className="container mx-auto px-6 max-w-4xl relative z-10">
+      {/* Контент */}
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
         <motion.h2
-          className="text-5xl font-['Playfair_Display'] text-center text-rose-600 mb-8"
+          className="text-5xl font-['Playfair_Display'] text-rose-600 mb-8 drop-shadow-[0_2px_10px_rgba(255,0,120,0.3)]"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -74,7 +81,7 @@ const Info = () => {
         </motion.h2>
 
         <motion.p
-          className="text-center text-lg text-gray-700 mb-12 leading-relaxed"
+          className="text-lg text-gray-700 mb-12 leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -94,12 +101,12 @@ const Info = () => {
             <motion.div
               key={id}
               variants={itemVariants}
-              className="flex flex-col sm:flex-row sm:items-center bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-md hover:shadow-rose-300 hover:scale-105 transition-all duration-300"
+              className="flex flex-col sm:flex-row sm:items-center bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-[0_0_30px_rgba(255,150,200,0.3)] border border-rose-100 hover:shadow-[0_0_30px_rgba(255,180,200,0.6)] hover:scale-[1.02] transition-all duration-300"
             >
-              <div className="flex-shrink-0 bg-rose-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold shadow-md">
+              <div className="flex-shrink-0 bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold shadow-md">
                 {id}
               </div>
-              <div className="sm:ml-6 flex-1 mt-4 sm:mt-0">
+              <div className="sm:ml-6 flex-1 mt-4 sm:mt-0 text-left">
                 <h3 className="text-xl font-semibold text-gray-800 mb-1">
                   {title}
                 </h3>
