@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../assets/images/logotip.png";
+import bgImage from "../assets/images/logotip.PNG";
 import { Cake, Coffee, Info, Phone } from "lucide-react";
 
 const Hero = () => {
@@ -64,7 +64,7 @@ const Hero = () => {
 
           <motion.button
             onClick={handleOrderClick}
-            whileTap={{ scale: 0.96 }}
+            whileTap={{ scale: 100 }}
             className="bg-rose-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-rose-400 hover:shadow-rose-300 transition-transform duration-300 hover:scale-105"
           >
             Заказать
