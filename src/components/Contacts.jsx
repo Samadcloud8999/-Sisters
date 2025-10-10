@@ -2,7 +2,10 @@ import { motion } from "framer-motion";
 import { FaPhone, FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 const Contacts = () => (
-  <section className="py-20 bg-gradient-to-b from-pink-50 to-rose-100 px-6">
+  <section
+    className="py-20 bg-gradient-to-b from-pink-50 to-rose-100 px-6"
+    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+  >
     <div className="container mx-auto max-w-3xl text-center">
       <motion.h2
         className="text-4xl md:text-5xl font-bold text-rose-600 mb-12 drop-shadow-sm"
@@ -10,6 +13,7 @@ const Contacts = () => (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
+        style={{ fontFamily: "'Playfair Display', serif" }}
       >
         Контакты
       </motion.h2>
@@ -26,15 +30,23 @@ const Contacts = () => (
           className="flex items-center justify-center space-x-3 p-3 rounded-xl hover:bg-rose-50 transition"
         >
           <FaPhone className="text-rose-500 text-2xl" />
-          <span className="text-lg text-gray-700">+996 (555) 222-258</span>
-        </motion.div> 
+          <span
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-lg text-gray-700"
+          >
+            +996 (555) 222-258
+          </span>
+        </motion.div>
 
         <motion.div
           whileHover={{ scale: 1.05 }}
           className="flex items-center justify-center space-x-3 p-3 rounded-xl hover:bg-green-50 transition"
         >
           <FaWhatsapp className="text-green-500 text-2xl" />
-          <span className="text-lg text-gray-700">
+          <span
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-lg text-gray-700"
+          >
             <a
               href="https://wa.me/996555222258"
               target="_blank"
@@ -45,6 +57,7 @@ const Contacts = () => (
             </a>
           </span>
         </motion.div>
+
         <motion.a
           href="https://www.instagram.com/sisters_sweets_bishkek?igsh=MW81NmJiMXU0dDNuZg=="
           target="_blank"
@@ -53,7 +66,12 @@ const Contacts = () => (
           className="flex items-center justify-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition"
         >
           <FaInstagram className="text-pink-500 text-2xl" />
-          <span className="text-lg text-gray-700">Instagram</span>
+          <span
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-lg text-gray-700"
+          >
+            Instagram
+          </span>
         </motion.a>
       </motion.div>
     </div>

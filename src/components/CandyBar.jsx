@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
@@ -38,10 +39,10 @@ const CandyBar = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-br from-pink-100 via-rose-50 to-violet-100 py-16 px-4 sm:px-8 relative overflow-hidden min-h-screen pb-32">
+    <section className="bg-gradient-to-br from-pink-100 via-rose-50 to-violet-100 py-16 px-4 sm:px-8 relative overflow-hidden min-h-screen pb-32 font-['Cormorant_Garamond']">
       {/* Заголовок */}
       <motion.h1
-        className="text-center text-5xl font-['Playfair_Display'] text-rose-600 mb-3 mt-11 drop-shadow-[0_2px_10px_rgba(255,0,120,0.3)]"
+        className="text-center text-5xl sm:text-6xl font-['Playfair_Display'] text-rose-600 mb-3 mt-11 drop-shadow-[0_2px_10px_rgba(255,0,120,0.3)]"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -49,7 +50,7 @@ const CandyBar = () => {
         Кенди-Бар
       </motion.h1>
 
-      <p className="text-center text-lg text-gray-700 mb-10">
+      <p className="text-center text-lg sm:text-xl text-gray-700 mb-10 font-light">
         Яркие и вкусные композиции для любого праздника 🎉
       </p>
 
@@ -58,7 +59,7 @@ const CandyBar = () => {
         {/* Мобильный dropdown */}
         <div className="sm:hidden relative w-full max-w-md">
           <button
-            className="w-full flex justify-between items-center bg-white/90 backdrop-blur-xl px-4 py-3 rounded-full shadow-lg font-semibold text-gray-800 hover:bg-pink-100 transition"
+            className="w-full flex justify-between items-center bg-white/90 backdrop-blur-xl px-4 py-3 rounded-full shadow-lg font-semibold text-gray-800 hover:bg-pink-100 transition font-['Playfair_Display']"
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
             <span className="flex items-center gap-2">
@@ -79,7 +80,7 @@ const CandyBar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="absolute z-20 w-full mt-2 bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden"
+                className="absolute z-20 w-full mt-2 bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden font-['Cormorant_Garamond']"
               >
                 {tabs.map((tab) => (
                   <li
@@ -110,7 +111,7 @@ const CandyBar = () => {
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-7 py-3 rounded-full font-semibold shadow-md flex items-center gap-2 transition-all duration-300 ${
+              className={`px-7 py-3 rounded-full font-semibold shadow-md flex items-center gap-2 transition-all duration-300 font-['Playfair_Display'] ${
                 activeTab === tab.id
                   ? "bg-gradient-to-r from-rose-500 to-pink-400 text-white shadow-[0_0_15px_rgba(255,100,150,0.6)]"
                   : "bg-white/90 text-gray-700 hover:bg-gradient-to-r hover:from-pink-100 hover:to-rose-100 hover:text-rose-600"
@@ -130,7 +131,7 @@ const CandyBar = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -25 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="bg-white/70 backdrop-blur-xl rounded-3xl shadow-[0_0_30px_rgba(255,150,200,0.3)] p-6 sm:p-10 border border-rose-100 max-w-6xl mx-auto"
+          className="bg-white/70 backdrop-blur-xl rounded-3xl shadow-[0_0_30px_rgba(255,150,200,0.3)] p-6 sm:p-10 border border-rose-100 max-w-6xl mx-auto font-['Cormorant_Garamond']"
         >
           <Outlet />
         </motion.div>

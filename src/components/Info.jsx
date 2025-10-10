@@ -54,7 +54,7 @@ const Info = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-pink-100 via-rose-50 to-violet-100 py-20 px-4 sm:px-8 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-pink-100 via-rose-50 to-violet-100 py-20 px-4 sm:px-8 overflow-hidden font-['Cormorant_Garamond']">
       {/* Фоновые элементы */}
       <motion.div
         className="absolute -top-10 -right-10 w-72 h-72 bg-rose-300/20 rounded-full blur-3xl"
@@ -86,8 +86,10 @@ const Info = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className="font-semibold text-rose-500">Sisters' Sweets</span> —
-          авторская кондитерская, создающая уникальные торты и кенди-бары на
+          <span className="font-semibold text-rose-500 font-['Playfair_Display']">
+            Sisters' Sweets
+          </span>{" "}
+          — авторская кондитерская, создающая уникальные торты и кенди-бары на
           заказ.
         </motion.p>
 
@@ -103,11 +105,11 @@ const Info = () => {
               variants={itemVariants}
               className="flex flex-col sm:flex-row sm:items-center bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-[0_0_30px_rgba(255,150,200,0.3)] border border-rose-100 hover:shadow-[0_0_30px_rgba(255,180,200,0.6)] hover:scale-[1.02] transition-all duration-300"
             >
-              <div className="flex-shrink-0 bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold shadow-md">
+              <div className="flex-shrink-0 bg-gradient-to-r from-rose-500 to-pink-400 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold shadow-md font-['Playfair_Display']">
                 {id}
               </div>
               <div className="sm:ml-6 flex-1 mt-4 sm:mt-0 text-left">
-                <h3 className="text-xl font-semibold text-gray-800 mb-1">
+                <h3 className="text-xl font-semibold text-gray-800 mb-1 font-['Playfair_Display']">
                   {title}
                 </h3>
                 <p className="text-gray-600">{text}</p>

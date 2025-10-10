@@ -8,7 +8,6 @@ const GirlsCakes = () => {
 
   const images = [
     //{ src: image1, alt: "Торт для девочек №1" },
- 
   ];
 
   return (
