@@ -62,7 +62,7 @@ const WelcomeSection = () => {
           </a>
         </motion.div>
 
-        {/* Карточки */}
+ 
         <motion.div
           className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 mt-10"
           variants={fadeIn(0.2)}
