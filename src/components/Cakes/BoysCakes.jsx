@@ -8,15 +8,6 @@ const BoysCakes = () => {
 
   const images = [
     // { src: '/images/boys-cake-1.jpg', alt: 'Торт для мальчиков №1' },
-    // { src: '/images/boys-cake-2.jpg', alt: 'Торт для мальчиков №2' },
-    // { src: '/images/boys-cake-3.jpg', alt: 'Торт для мальчиков №3' },
-    // { src: '/images/boys-cake-4.jpg', alt: 'Торт для мальчиков №4' },
-    // { src: '/images/boys-cake-5.jpg', alt: 'Торт для мальчиков №5' },
-    // { src: '/images/boys-cake-6.jpg', alt: 'Торт для мальчиков №6' },
-    // { src: '/images/boys-cake-7.jpg', alt: 'Торт для мальчиков №7' },
-    // { src: '/images/boys-cake-8.jpg', alt: 'Торт для мальчиков №8' },
-    // { src: '/images/boys-cake-9.jpg', alt: 'Торт для мальчиков №9' },
-    // { src: '/images/boys-cake-10.jpg', alt: 'Торт для мальчиков №10' },
   ];
 
   return (

@@ -9,17 +9,7 @@ const GirlsCakes = () => {
 
   const images = [
     { src: image1, alt: "Торт для девочек №1" },
-    // { src: '/images/girls-cake-2.jpg', alt: 'Торт для девочек №2' },
-    // { src: '/images/girls-cake-3.jpg', alt: 'Торт для девочек №3' },
-    // { src: '/images/girls-cake-4.jpg', alt: 'Торт для девочек №4' },
-    // { src: '/images/girls-cake-5.jpg', alt: 'Торт для девочек №5' },
-    // { src: '/images/girls-cake-6.jpg', alt: 'Торт для девочек №6' },
-    // { src: '/images/girls-cake-7.jpg', alt: 'Торт для девочек №7' },
-    // { src: '/images/girls-cake-8.jpg', alt: 'Торт для девочек №8' },
-    // { src: '/images/girls-cake-9.jpg', alt: 'Торт для девочек №9' },
-    // { src: '/images/girls-cake-10.jpg', alt: 'Торт для девочек №10' },
-    // { src: '/images/girls-cake-11.jpg', alt: 'Торт для девочек №11' },
-    // { src: '/images/girls-cake-12.jpg', alt: 'Торт для девочек №12' },
+ 
   ];
 
   return (
