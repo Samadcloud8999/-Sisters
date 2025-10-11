@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
+import logo from "../assets/images/logotip.PNG";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,13 +24,19 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-[#fff7f9] shadow-lg z-50 px-5 py-4 font-['Cormorant_Garamond'] text-gray-700">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link
-          to="/"
-          className="text-3xl sm:text-4xl font-['Playfair_Display'] text-rose-500 tracking-wide hover:text-rose-400 transition-all select-none"
-        >
-          Sisters’ Sweets
+        <Link to="/" className="flex items-center space-x-3 group select-none">
+          <motion.img
+            src={logo}
+            alt="Sisters’ Sweets Logo"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-full shadow-md border border-rose-100 group-hover:scale-105 transition-transform duration-300"
+          />
+          <span className="text-2xl sm:text-3xl font-['Playfair_Display'] text-rose-500 tracking-wide hover:text-rose-400 transition-all">
+            Sisters’ Sweets
+          </span>
         </Link>
-
         <nav className="hidden md:flex space-x-8 ml-auto items-center">
           {menuItems.map((item) => (
             <Link
@@ -105,7 +112,6 @@ const Header = () => {
                 <span>Instagram</span>
               </a>
             </motion.nav>
-
           </>
         )}
       </AnimatePresence>
