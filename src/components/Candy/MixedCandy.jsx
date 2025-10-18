@@ -1,16 +1,28 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import Card from '../Card';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Card from "../Card";
+import FullscreenGallery from "../FullscreenGallery";
+
+import image1 from "../../assets/images/Kendymix/IMG_0214.webp";
+import image2 from "../../assets/images/Kendymix/IMG_0417.webp";
+import image3 from "../../assets/images/Kendymix/IMG_1368.webp";
+import image4 from "../../assets/images/Kendymix/IMG_3174.webp";
+import image5 from "../../assets/images/Kendymix/IMG_3492.webp";
+import image6 from "../../assets/images/Kendymix/IMG_9116.webp";
+import image7 from "../../assets/images/Kendymix/IMG_9703.webp";
 
 const MixedCandy = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-
-
   const images = [
-    // { src: '/images/candy-mixed-1.jpg', alt: 'Кенди-бар разное №1' },
-    // { src: '/images/candy-mixed-2.jpg', alt: 'Кенди-бар разное №2' },
-    
+    { src: image1, alt: "Кенди-бар разное №1" },
+    { src: image2, alt: "Кенди-бар разное №2" },
+    { src: image3, alt: "Кенди-бар разное №3" },
+    { src: image4, alt: "Кенди-бар разное №4" },
+    { src: image5, alt: "Кенди-бар разное №5" },
+    { src: image6, alt: "Кенди-бар разное №6" },
+    { src: image7, alt: "Кенди-бар разное №7" },
   ];
+
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
   return (
     <>
@@ -23,10 +35,22 @@ const MixedCandy = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <Card imageSrc={image.src} alt={image.alt} onClick={() => setSelectedImage(image.src)} />
+            <Card
+              imageSrc={image.src}
+              alt={image.alt}
+              onClick={() => setSelectedIndex(i)}
+            />
           </motion.div>
         ))}
       </div>
+
+      {selectedIndex !== null && (
+        <FullscreenGallery
+          images={images}
+          selectedIndex={selectedIndex}
+          onClose={() => setSelectedIndex(null)}
+        />
+      )}
     </>
   );
 };
