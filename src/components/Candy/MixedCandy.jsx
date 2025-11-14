@@ -3,43 +3,38 @@ import { useState } from "react";
 import Card from "../Card";
 import FullscreenGallery from "../FullscreenGallery";
 
-import image1 from "../../assets/images/Kendymix/IMG_0214.webp";
-import image2 from "../../assets/images/Kendymix/IMG_0417.webp";
-import image3 from "../../assets/images/Kendymix/IMG_1368.webp";
-import image4 from "../../assets/images/Kendymix/IMG_3174.webp";
-import image5 from "../../assets/images/Kendymix/IMG_3492.webp";
-import image6 from "../../assets/images/Kendymix/IMG_9116.webp";
-import image7 from "../../assets/images/Kendymix/IMG_9703.webp";
+const imagesImport = import.meta.glob(
+  "/src/assets/images/Kendymix/*.webp",
+  { eager: true }
+);
+
+const mixedImages = Object.values(imagesImport).map(
+  (mod) => mod.default || mod
+);
 
 const MixedCandy = () => {
-  const images = [
-    { src: image1, alt: "Кенди-бар разное №1" },
-    { src: image2, alt: "Кенди-бар разное №2" },
-    { src: image3, alt: "Кенди-бар разное №3" },
-    { src: image4, alt: "Кенди-бар разное №4" },
-    { src: image5, alt: "Кенди-бар разное №5" },
-    { src: image6, alt: "Кенди-бар разное №6" },
-    { src: image7, alt: "Кенди-бар разное №7" },
-  ];
+  const images = mixedImages.map((src, index) => ({
+    src,
+    alt: `Кенди-бар разное №${index + 1}`,
+  }));
 
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   return (
     <>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto p-4">
         {images.map((image, i) => (
           <motion.div
             key={i}
+            className="overflow-hidden rounded-xl shadow-lg cursor-pointer"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
+            onClick={() => setSelectedIndex(i)}
           >
-            <Card
-              imageSrc={image.src}
-              alt={image.alt}
-              onClick={() => setSelectedIndex(i)}
-            />
+            <Card imageSrc={image.src} alt={image.alt} />
           </motion.div>
         ))}
       </div>

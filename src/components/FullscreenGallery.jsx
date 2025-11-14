@@ -18,7 +18,6 @@ const FullscreenGallery = ({ images, selectedIndex, onClose }) => {
     setCurrent((c) => (c + 1) % images.length);
   }, [images.length]);
 
-  // управление клавиатурой
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "Escape") onClose();
@@ -29,7 +28,6 @@ const FullscreenGallery = ({ images, selectedIndex, onClose }) => {
     return () => window.removeEventListener("keydown", handleKey);
   }, [onClose, prev, next]);
 
-  // свайпы
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -59,7 +57,6 @@ const FullscreenGallery = ({ images, selectedIndex, onClose }) => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Кнопка закрытия */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition"
@@ -67,9 +64,7 @@ const FullscreenGallery = ({ images, selectedIndex, onClose }) => {
           <X size={26} />
         </button>
 
-        {/* Контейнер изображения со стрелками */}
         <div className="relative flex items-center justify-center">
-          {/* Левая стрелка */}
           <button
             onClick={prev}
             className="absolute left-2 sm:-left-10 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition flex items-center justify-center"
@@ -77,7 +72,6 @@ const FullscreenGallery = ({ images, selectedIndex, onClose }) => {
             <ChevronLeft size={28} />
           </button>
 
-          {/* Изображение */}
           <motion.img
             key={current}
             src={images[current].src}
@@ -90,7 +84,6 @@ const FullscreenGallery = ({ images, selectedIndex, onClose }) => {
             draggable={false}
           />
 
-          {/* Правая стрелка */}
           <button
             onClick={next}
             className="absolute right-2 sm:-right-10 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition flex items-center justify-center"
@@ -99,12 +92,10 @@ const FullscreenGallery = ({ images, selectedIndex, onClose }) => {
           </button>
         </div>
 
-        {/* Индикатор */}
         <div className="absolute bottom-16 text-white text-sm bg-black/40 px-3 py-1 rounded">
           {current + 1} / {images.length}
         </div>
 
-        {/* Подсказка для мобильных */}
         <div className="absolute bottom-4 text-white text-xs opacity-80 sm:hidden flex items-center justify-center gap-2">
           <ChevronLeft size={16} className="opacity-60" />
           <span>Листайте или жмите стрелки</span>

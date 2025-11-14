@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
-import logo from "../assets/images/logotip.PNG";
+import logo from "../../public/logotip.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

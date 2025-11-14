@@ -40,7 +40,6 @@ const CandyBar = () => {
 
   return (
     <section className="bg-gradient-to-br from-pink-100 via-rose-50 to-violet-100 py-16 px-4 sm:px-8 relative overflow-hidden min-h-screen pb-32 font-['Cormorant_Garamond']">
-      {/* Заголовок */}
       <motion.h1
         className="text-center text-5xl sm:text-6xl font-['Playfair_Display'] text-rose-600 mb-3 mt-11 drop-shadow-[0_2px_10px_rgba(255,0,120,0.3)]"
         initial={{ opacity: 0, y: -20 }}
@@ -54,9 +53,7 @@ const CandyBar = () => {
         Яркие и вкусные композиции для любого праздника 🎉
       </p>
 
-      {/* Навигация */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-        {/* Мобильный dropdown */}
         <div className="sm:hidden relative w-full max-w-md">
           <button
             className="w-full flex justify-between items-center bg-white/90 backdrop-blur-xl px-4 py-3 rounded-full shadow-lg font-semibold text-gray-800 hover:bg-pink-100 transition font-['Playfair_Display']"
@@ -100,7 +97,6 @@ const CandyBar = () => {
           </AnimatePresence>
         </div>
 
-        {/* Десктоп кнопки */}
         <div className="hidden sm:flex justify-center gap-4 flex-wrap">
           {tabs.map((tab) => (
             <motion.button
@@ -123,7 +119,6 @@ const CandyBar = () => {
         </div>
       </div>
 
-      {/* Контент */}
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}

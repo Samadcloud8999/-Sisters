@@ -7,6 +7,7 @@ const imagesImport = import.meta.glob(
   "/src/assets/images/Vzrosliicucis/*.webp",
   { eager: true }
 );
+
 const adultsImages = Object.values(imagesImport).map(
   (mod) => mod.default || mod
 );

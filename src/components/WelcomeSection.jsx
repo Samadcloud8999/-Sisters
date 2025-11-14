@@ -21,7 +21,6 @@ const WelcomeSection = () => {
 
   return (
     <section className="relative py-24 px-6 sm:px-8 bg-gradient-to-b from-pink-100 via-rose-50 to-amber-50 overflow-hidden font-['Cormorant_Garamond']">
-      {/* Фоновые сладкие шары */}
       <motion.div
         className="absolute -top-32 left-1/3 w-[500px] h-[500px] bg-pink-300/30 rounded-full blur-3xl"
         initial={{ opacity: 0, scale: 0.7 }}
@@ -35,7 +34,6 @@ const WelcomeSection = () => {
         transition={{ duration: 1.8, delay: 0.3 }}
       />
 
-      {/* Декоративные “сахарные” волны */}
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-pink-200/60 to-transparent rounded-t-[50%] blur-2xl" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
@@ -68,7 +66,6 @@ const WelcomeSection = () => {
           </motion.a>
         </motion.div>
 
-        {/* Карточки */}
         <motion.div
           className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 mt-12"
           variants={fadeIn(0.2)}
@@ -118,7 +115,6 @@ const WelcomeSection = () => {
         </motion.div>
       </div>
 
-      {/* Конфетти */}
       <motion.div
         className="absolute top-0 left-0 right-0 h-20 bg-[url('/images/confetti.svg')] bg-repeat-x opacity-40"
         initial={{ backgroundPositionX: 0 }}

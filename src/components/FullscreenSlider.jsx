@@ -1,4 +1,3 @@
-// FullscreenSlider.jsx
 import React, { useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -29,9 +28,7 @@ const FullscreenSlider = ({
   onClose,
   setIndex,
 }) => {
-  // images: [{src, alt}, ...]
-  // startIndex: number initial
-  // setIndex: function to change current index from parent (optional)
+
   const [current, setCurrent] = React.useState(startIndex || 0);
   const [direction, setDirection] = React.useState(0);
 
@@ -41,7 +38,6 @@ const FullscreenSlider = ({
     }
   }, [isOpen, startIndex]);
 
-  // Prev / Next helpers
   const prev = useCallback(() => {
     const nxt = (current - 1 + images.length) % images.length;
     setDirection(-1);
@@ -56,7 +52,6 @@ const FullscreenSlider = ({
     if (setIndex) setIndex(nxt);
   }, [current, images.length, setIndex]);
 
-  // Keyboard controls
   useEffect(() => {
     if (!isOpen) return;
     const handler = (e) => {
@@ -80,15 +75,12 @@ const FullscreenSlider = ({
           animate="visible"
           exit="hidden"
         >
-          {/* dark backdrop */}
           <div
             className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             onClick={onClose}
           />
 
-          {/* container */}
           <div className="relative z-10 w-full h-full flex items-center justify-center px-4">
-            {/* Close */}
             <button
               onClick={onClose}
               className="absolute top-6 right-6 z-20 rounded-full bg-black/40 p-2 hover:bg-black/60 transition"
@@ -97,7 +89,6 @@ const FullscreenSlider = ({
               <X size={24} color="white" />
             </button>
 
-            {/* Prev button */}
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -163,7 +154,6 @@ const FullscreenSlider = ({
               </AnimatePresence>
             </div>
 
-            {/* small footer controls: index and arrows for mobile */}
             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
               <button
                 onClick={(e) => {

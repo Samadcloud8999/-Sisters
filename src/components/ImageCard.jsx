@@ -1,4 +1,3 @@
-// ImageCard.jsx
 import React from "react";
 
 const ImageCard = ({ src, alt, onClick }) => {

@@ -59,7 +59,6 @@ const VideoSlider = () => {
 
   return (
     <section className="relative py-16 sm:py-24 bg-gradient-to-b from-pink-100 via-rose-50 to-amber-50 overflow-hidden font-['Cormorant_Garamond']">
-      {/* Декоративные шары */}
       <motion.div
         className="absolute top-[-100px] left-[10%] w-[400px] h-[400px] bg-pink-300/30 rounded-full blur-3xl"
         initial={{ opacity: 0, scale: 0.7 }}
@@ -102,7 +101,6 @@ const VideoSlider = () => {
             />
           </AnimatePresence>
 
-          {/* Кнопки навигации */}
           <button
             onClick={prevSlide}
             disabled={isTransitioning}
@@ -119,7 +117,6 @@ const VideoSlider = () => {
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Полноэкранный режим */}
           <button
             onClick={handleFullscreen}
             className="absolute top-3 right-3 bg-white/60 hover:bg-rose-100 text-rose-600 p-2 rounded-full shadow-md transition-all backdrop-blur-sm"
@@ -131,11 +128,9 @@ const VideoSlider = () => {
             )}
           </button>
 
-          {/* Декоративное “свечение” снизу */}
           <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-100/70 to-transparent" />
         </div>
 
-        {/* Индикаторы */}
         <div className="flex justify-center mt-6 gap-3">
           {videos.map((_, index) => (
             <button
